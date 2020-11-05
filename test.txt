@@ -1,0 +1,32 @@
+		{
+		"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+		"contentVersion": "1.0.0.0",
+		"variables": {
+		"abc": {
+		"one": 1,
+		"two": {
+		"three": 2
+		}
+		},
+		"v1": "[variables('abc').two.three]",
+		"v2": "[parameters('def')]"
+		},
+		"parameters": {
+		"def": {
+		"type": "object",
+		"defaultValue": {
+		"one": 1,
+		"two": {
+		"three": 2
+		}
+		}
+		}
+		},
+		"resources": [],
+		"outputs": {
+		"a": {
+		"type": "string",
+		"value": "[concat(variables('v1'),variables('v2'))]"
+		}
+		}
+}
